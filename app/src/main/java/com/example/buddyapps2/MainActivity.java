@@ -1,5 +1,5 @@
 package com.example.buddyapps2;
-// COMMIT AND PUSH TRY
+//DELETED
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
