@@ -15,6 +15,12 @@
         <activity
             android:name=".FriendDetailActivity"
             android:exported="false" />
+        <activity android:name=".ReportListActivity"
+            android:exported="false" />
+        <activity android:name=".FriendBirthdayActivity"
+            android:exported="false" />
+        <activity android:name=".FriendGenderActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

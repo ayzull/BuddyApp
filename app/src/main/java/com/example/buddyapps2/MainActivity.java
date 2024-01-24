@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(this, "Birthday", Toast.LENGTH_SHORT).show();
         }
         else if (itemID == R.id.nav_chart) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new ReportFragment()).commit();
+            Intent intent = new Intent(MainActivity.this, ReportListActivity.class);
+            startActivity(intent);
             Toast.makeText(this, "Report", Toast.LENGTH_SHORT).show();
         }
 
