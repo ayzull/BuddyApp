@@ -1,14 +1,62 @@
+// FriendGenderActivity.java
 package com.example.buddyapps2;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class FriendGenderActivity extends AppCompatActivity {
+
+    private PieChart pieChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_gender);
+
+        pieChart = findViewById(R.id.GenderPieChart);
+        populateGenderPieChart();
+    }
+
+    private void populateGenderPieChart() {
+        DBHelper dbHelper = new DBHelper(this);
+        dbHelper.populateFriendListArray();
+
+        // Get friend genders and count
+        HashMap<String, Integer> genderCount = new HashMap<>();
+        for (Friend friend : Friend.friendArrayList) {
+            String gender = friend.getGender();
+            genderCount.put(gender, genderCount.getOrDefault(gender, 0) + 1);
+        }
+
+        // Create entries for the pie chart
+        List<PieEntry> entries = new ArrayList<>();
+        for (String gender : genderCount.keySet()) {
+            entries.add(new PieEntry(genderCount.get(gender), gender));
+        }
+
+        // Set different colors for each entry
+        ArrayList<Integer> colors = new ArrayList<>();
+        for (int color : ColorTemplate.COLORFUL_COLORS) {
+            colors.add(color);
+        }
+
+        // Create a dataset and set properties
+        PieDataSet dataSet = new PieDataSet(entries, "Friend Genders");
+        dataSet.setColors(colors); // Set the colors for the dataset
+        PieData pieData = new PieData(dataSet);
+        pieChart.setData(pieData);
+        pieChart.getDescription().setEnabled(false);
+        pieChart.invalidate();
     }
 }

@@ -1,6 +1,7 @@
 // FriendBirthdayActivity.java
 package com.example.buddyapps2;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,8 +49,15 @@ public class FriendBirthdayActivity extends AppCompatActivity {
             entries.add(new PieEntry(birthMonthCount.get(month), month));
         }
 
+        // Set different colors for each entry
+        ArrayList<Integer> colors = new ArrayList<>();
+        for (int color : ColorTemplate.VORDIPLOM_COLORS) {
+            colors.add(color);
+        }
+
         // Create a dataset and set properties
         PieDataSet dataSet = new PieDataSet(entries, "Birth Months");
+        dataSet.setColors(colors); // Set the colors for the dataset
         PieData pieData = new PieData(dataSet);
         pieChart.setData(pieData);
         pieChart.getDescription().setEnabled(false);
