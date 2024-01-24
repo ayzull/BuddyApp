@@ -58,6 +58,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     new BirthdayFragment()).commit();
             Toast.makeText(this, "Birthday", Toast.LENGTH_SHORT).show();
         }
+        else if (itemID == R.id.nav_chart) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new ReportFragment()).commit();
+            Toast.makeText(this, "Report", Toast.LENGTH_SHORT).show();
+        }
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
