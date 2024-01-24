@@ -100,11 +100,11 @@ public class DBHelper extends SQLiteOpenHelper {
                     String mobile = result.getString(2);
                     String gender = result.getString(3);
                     String fEmail = result.getString(4);
-                    long dobMillis = result.getLong(5);
+                    String dobString = result.getString(5);
                     String address = result.getString(6);
                     String stringDeleted = result.getString(7);
                     Date deleted = getDateFromString(stringDeleted);
-                    Date dob = new Date(dobMillis);
+                    Date dob = getDateFromString(dobString);
                     Friend friend = new Friend(id, fname, mobile, gender, fEmail, dob, address, deleted);
                     Friend.friendArrayList.add(friend);
                 }
