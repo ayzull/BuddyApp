@@ -3,7 +3,6 @@ package com.example.buddyapps2;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -58,12 +57,66 @@ public class DBHelper extends SQLiteOpenHelper {
                 .append(" TEXT)");
 
         db.execSQL(Query_Table.toString());
+
+        //Create table for user, login
+        db.execSQL("create table user(username text primary key, password text, name text)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FRIEND);
         onCreate(db);
+
+        //Login
+        db.execSQL("drop table if exists user");
+        onCreate(db);
+    }
+
+    //Login
+    public boolean insert(String namauser, String pwd, String nama){
+        long ins;
+        SQLiteDatabase db;
+        ContentValues values;
+
+        //INSERT
+        db = this.getWritableDatabase();
+        values = new ContentValues();
+        values.put("username", namauser);
+        values.put("password", pwd);
+        values.put("name", nama);
+
+        ins = db.insert("user", null, values);
+        db.close();
+        return ins != -1;
+    }
+
+    //Check username
+    public boolean checkUsername(String namauser){
+        SQLiteDatabase db;
+        Cursor cursor;
+        int count;
+
+        db = this.getReadableDatabase();
+        cursor = db.rawQuery("SELECT * FROM user WHERE username=?", new String[]{namauser});
+
+        count = cursor.getCount();
+        db.close();
+        cursor.close();
+        return count<=0;
+    }
+
+    //Check login
+    public boolean checkLogin(String namauser, String pwd){
+        SQLiteDatabase db;
+        Cursor cursor;
+        int count;
+
+        db = this.getReadableDatabase();
+        cursor = db.rawQuery("SELECT * FROM user WHERE username=? and password=?", new String[]{namauser, pwd});
+        count = cursor.getCount();
+        db.close();
+        cursor.close();
+        return count == 1;
     }
 
     public void insertFriend(Friend friend) {
