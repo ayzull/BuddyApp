@@ -18,6 +18,11 @@
             android:id="@+id/nav_chart"
             android:icon="@drawable/ic_chart"
             android:title="Report" />
+
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="Log out" />
     </group>
 
 </menu>
