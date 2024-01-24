@@ -18,32 +18,19 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     DBHelper db;
     EditText editTextUsername, editTextPass;
-    Button loginButton;
+    Button loginButton, signUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Clickable Sign up text
-        TextView clickSignup = findViewById(R.id.clickSignup);
-        SpannableString spannableString = new SpannableString("Sign Up");
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick( View view) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
-        };
-        spannableString.setSpan(clickableSpan, 22, spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        clickSignup.setText(spannableString);
-        clickSignup.setMovementMethod(LinkMovementMethod.getInstance());
-
         db = new DBHelper(this);
 
         editTextUsername = findViewById(R.id.editTextUsername);
         editTextPass = findViewById(R.id.editTextPass);
         loginButton = findViewById(R.id.loginButton);
+        signUp = findViewById(R.id.signUp);
     }
 
     public void onClick(View view){
@@ -73,7 +60,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
 
-        } else if (id==R.id.clickSignup) { //Signup
+        } else if (id==R.id.signUp) { //Signup
             Toast.makeText(getApplicationContext(), "Sign Up", Toast.LENGTH_SHORT).show();
             intent = new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(intent);
