@@ -66,7 +66,7 @@ public class FriendDetailActivity extends AppCompatActivity {
         }
     }
 
-    public void saveFriend(View view) {
+    public void performSave() {
         DBHelper dbHelper = new DBHelper(this);
         String fname = String.valueOf(fNameEdit.getText());
         String mobile = String.valueOf(mobileEdit.getText());
@@ -93,6 +93,29 @@ public class FriendDetailActivity extends AppCompatActivity {
         }
 
         finish();
+    }
+
+    public void saveFriend(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to edit this friend?")
+                .setTitle("Confirm Edit");
+
+        builder.setPositiveButton("Edit", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked Save button
+                performSave();
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked Cancel button
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void performDelete() {
