@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import java.util.List;
 public class FriendsFragment extends Fragment {
 
     private ListView friendListView;
+    private SearchView searchView;
 
     Activity context;
     DBHelper db;
@@ -46,12 +48,46 @@ public class FriendsFragment extends Fragment {
 
     private void initWidgets(View view) {
         friendListView = view.findViewById(R.id.friendListView);
+        searchView = view.findViewById(R.id.serach_bar);
     }
     private void setFriendAdapter() {
+        List<Friend> filteredFriends = Friend.nonDeletedFriends();
         FriendAdapter friendAdapter = new FriendAdapter(requireContext(), Friend.nonDeletedFriends());
         friendListView.setAdapter(friendAdapter);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Handle the query submission if needed
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Filter the list based on the search query
+//                filteredFriends = filterFriends(Friend.nonDeletedFriends(), newText);
+//                friendAdapter.updateList(filteredFriends);
+//                return true;
+                List<Friend> newFilteredFriends = filterFriends(Friend.nonDeletedFriends(), newText);
+                friendAdapter.clear(); // Clear the existing items in the adapter
+                friendAdapter.addAll(newFilteredFriends); // Add the filtered items
+                return true;
+            }
+        });
     }
 
+    private List<Friend> filterFriends(List<Friend> friends, String query) {
+        query = query.toLowerCase();
+        List<Friend> filteredList = new ArrayList<>();
+
+        for (Friend friend : friends) {
+            if (friend.getFriend_name().toLowerCase().contains(query)) {
+                filteredList.add(friend);
+            }
+        }
+
+        return filteredList;
+    }
     public void loadFromDBToMemory() {
         db = new DBHelper(requireContext());
         db.populateFriendListArray();

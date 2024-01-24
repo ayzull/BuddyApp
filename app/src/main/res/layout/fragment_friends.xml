@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FriendsFragment"
     android:orientation="vertical">
 
@@ -18,6 +19,15 @@
         android:layout_height="wrap_content"
         android:text="ADD"
         android:textSize="35sp" />
+
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/serach_bar"
+        app:queryHint="Search friends"
+        app:iconifiedByDefault="false"
+        android:layout_margin="2dp">
+    </androidx.appcompat.widget.SearchView>
 
     <ListView
         android:id="@+id/friendListView"
