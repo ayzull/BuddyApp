@@ -30,9 +30,9 @@
         <activity
             android:name=".FriendDetailActivity"
             android:exported="false" />
-        <activity
-            android:name=".ReportListActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".ReportListActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".FriendBirthdayActivity"
             android:exported="false" />

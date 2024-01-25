@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -76,6 +77,12 @@ public class FriendDetailActivity extends AppCompatActivity {
         Date dob = parseDate(dobString);
         String address = String.valueOf(addressEdit.getText());
 
+        if (fname.isEmpty() || mobile.isEmpty() || fEmail.isEmpty() || dobString.isEmpty() || address.isEmpty()) {
+            // Display an error message to the user
+            Toast.makeText(getApplicationContext(), "Fields are empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if(selectedFriend == null) {
             int id = Friend.friendArrayList.size();
             Friend newFriend = new Friend(id, fname, mobile, gender, fEmail, dob, address);
@@ -96,6 +103,7 @@ public class FriendDetailActivity extends AppCompatActivity {
     }
 
     public void saveFriend(View view) {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Are you sure you want to save this friend?")
                 .setTitle("Confirm Save");
