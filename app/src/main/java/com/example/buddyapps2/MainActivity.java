@@ -58,11 +58,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (itemID == R.id.nav_birthday) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new BirthdayFragment()).commit();
-            Toast.makeText(this, "Birthday", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Birthdays", Toast.LENGTH_SHORT).show();
         } else if (itemID == R.id.nav_chart) {
-            Intent intent = new Intent(MainActivity.this, ReportListActivity.class);
-            startActivity(intent);
-            Toast.makeText(this, "Report", Toast.LENGTH_SHORT).show();
+//            Intent intent = new Intent(MainActivity.this, ReportListActivity.class);
+//            startActivity(intent);
+//            Toast.makeText(this, "Report", Toast.LENGTH_SHORT).show();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new ReportFragment()).commit();
+            Toast.makeText(this, "Charts", Toast.LENGTH_SHORT).show();
         } else if (itemID == R.id.logout) {
             logoutMenu(MainActivity.this);
         }

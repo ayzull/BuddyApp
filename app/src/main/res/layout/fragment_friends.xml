@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FriendsFragment"
     android:orientation="vertical"
-    android:layout_marginHorizontal="20dp"
-    android:paddingTop="18dp">
+    android:paddingTop="18dp"
+    android:background="@drawable/background">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TEST"
-        android:textSize="35sp"/>
+        android:layout_gravity="center"
+        android:text="MY FRIENDS"
+        android:textStyle="bold"
+        android:textColor="#053939"
+        android:textSize="35sp" />
 
     <Button
         android:id="@+id/newFriend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ADD"
-        android:textSize="35sp" />
+        android:text="Add New Friend"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:backgroundTint="#053939"
+        android:textColor="@color/white"/>
 
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
@@ -28,7 +35,8 @@
         android:id="@+id/serach_bar"
         app:queryHint="Search friends"
         app:iconifiedByDefault="false"
-        android:layout_margin="2dp">
+        android:layout_margin="2dp"
+        android:background="@color/white">
     </androidx.appcompat.widget.SearchView>
 
     <ListView

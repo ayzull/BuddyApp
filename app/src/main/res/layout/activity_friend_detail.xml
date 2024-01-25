@@ -4,92 +4,150 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".FriendDetailActivity"
-    android:paddingHorizontal="20dp"
-    android:paddingTop="18dp">
+    android:paddingHorizontal="10dp"
+    android:paddingTop="10dp"
+    tools:context=".FriendDetailActivity">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Detail"
-        android:textSize="35sp" />
+        android:fillViewport="true"
+        android:scrollbars="none">
 
-    <ImageView
-        android:id="@+id/fImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@mipmap/ic_launcher" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/fName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Name"
-        android:textSize="20sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Detail"
+                android:textStyle="bold"
+                android:textColor="#053939"
+                android:textSize="25sp" />
 
-    <EditText
-        android:id="@+id/fMobile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Phone Number"
-        android:textSize="20sp"
-        android:inputType="phone"/>
+            <ImageView
+                android:id="@+id/fImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_launcher" />
 
-    <Spinner
-        android:id="@+id/fGender"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:entries="@array/gender_options" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="#053939"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
+            <EditText
+                android:id="@+id/fName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Full Name"
+                android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/fEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="E-Mail"
-        android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textColor="#053939"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/fDob"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Date of Birth"
-        android:textSize="20sp"
-        android:onClick="datePickerDialog"
-        android:focusable="false"/>
+            <EditText
+                android:id="@+id/fMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/fAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Address"
-        android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:textColor="#053939"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:paddingTop="17dp">
+            <Spinner
+                android:id="@+id/fGender"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:entries="@array/gender_options" />
 
-        <Button
-            android:id="@+id/editF_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="save"
-            android:textSize="35sp"
-            android:onClick="saveFriend"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-Mail"
+                android:textColor="#053939"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/deleteF_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="delete"
-            android:textSize="35sp"
-            android:onClick="deleteFriend"/>
-    </LinearLayout>
+            <EditText
+                android:id="@+id/fEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="example@gmail.com"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Birthday"
+                android:textColor="#053939"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/fDob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:hint="Select Date"
+                android:onClick="datePickerDialog"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:textColor="#053939"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/fAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address"
+                android:minLines="3"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/editF_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="saveFriend"
+                android:text="save"
+                android:textSize="35sp" />
+
+            <Button
+                android:id="@+id/deleteF_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="deleteFriend"
+                android:text="delete"
+                android:textSize="35sp" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
