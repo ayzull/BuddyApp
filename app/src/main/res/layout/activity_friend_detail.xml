@@ -25,17 +25,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Detail"
+                android:text="DETAILS"
                 android:textStyle="bold"
                 android:textColor="#053939"
-                android:textSize="25sp" />
+                android:textSize="35sp" />
 
             <ImageView
                 android:id="@+id/fImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/ic_profile" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -132,21 +132,23 @@
 
             <Button
                 android:id="@+id/editF_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:onClick="saveFriend"
                 android:text="save"
-                android:textSize="35sp" />
+                android:textSize="25sp"
+                android:backgroundTint="#00AEAE"/>
 
             <Button
                 android:id="@+id/deleteF_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:onClick="deleteFriend"
                 android:text="delete"
-                android:textSize="35sp" />
+                android:textSize="25sp"
+                android:backgroundTint="#00AEAE"/>
         </LinearLayout>
     </ScrollView>
 

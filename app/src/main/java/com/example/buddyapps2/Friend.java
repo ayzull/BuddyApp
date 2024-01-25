@@ -137,5 +137,14 @@ public class Friend {
             return null;
         }
     }
+
+    public String getBirthdayString() {
+        if (dob != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM");
+            return dateFormat.format(dob);
+        } else {
+            return "";
+        }
+    }
 }
 

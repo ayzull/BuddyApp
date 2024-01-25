@@ -6,13 +6,20 @@
     tools:context=".BirthdayFragment"
     android:orientation="vertical">
 
-    <Toolbar
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/sendBirthdayWishButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Upcoming Birthday"/>
-
+        android:text="Send Birthday Wish"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"/>
     <ListView
+        android:id="@+id/birthdayListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:dividerHeight="3dp"
+        android:divider="@color/colorPrimary"/>
 
 </LinearLayout>
