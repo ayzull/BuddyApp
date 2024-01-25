@@ -55,8 +55,8 @@ public class ReportFragment extends Fragment {
 
     private void listShow() {
         list = new ArrayList<>();
-        list.add(new Reports(R.drawable.ic_launcher_background, "Gender Report", "Report for Friend's Gender"));
-        list.add(new Reports(R.drawable.ic_launcher_background, "Birthday Report", "Report for Friend's Birthday"));
+        list.add(new Reports(R.drawable.ic_gender, "Gender Report", "Report for Friend's Gender"));
+        list.add(new Reports(R.drawable.ic_birthday, "Birthday Report", "Report for Friend's Birthday"));
     }
 
 }

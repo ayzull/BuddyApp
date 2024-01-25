@@ -1,9 +1,12 @@
 package com.example.buddyapps2;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -44,7 +47,7 @@ public class ReportListActivity extends AppCompatActivity {
     private void listShow(){
         list = new ArrayList<>();
 
-        list.add(new Reports(R.drawable.ic_launcher_background, "Gender Report", "Report for Friend's Gender"));
-        list.add(new Reports(R.drawable.ic_launcher_background, "Birthday Report", "Report for Friend's Birthday"));
+        list.add(new Reports(R.drawable.ic_gender, "Gender Report", "Report for Friend's Gender"));
+        list.add(new Reports(R.drawable.ic_birthday, "Birthday Report", "Report for Friend's Birthday"));
     }
 }

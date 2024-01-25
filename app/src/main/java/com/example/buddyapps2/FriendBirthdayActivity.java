@@ -3,7 +3,10 @@ package com.example.buddyapps2;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -27,6 +30,10 @@ public class FriendBirthdayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_birthday);
+
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         pieChart = findViewById(R.id.BirthdayPieChart);
         populatePieChart();
@@ -70,5 +77,12 @@ public class FriendBirthdayActivity extends AppCompatActivity {
             return dateFormat.format(date);
         }
         return "";
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        if(item.getItemId() == android.R.id.home){
+            this.finish();
+        }
+        return true;
     }
 }
