@@ -17,6 +17,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_FRIEND="friend";
 
+    private static final String TABLE_USER="user";
+
     private static final String KEY_FID="friend_id";
     private static final String KEY_NAME="friend_name";
     private static final String KEY_MOBILE="mobile";
@@ -25,6 +27,10 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_DOB="dob";
     private static final String KEY_ADDRESS="address";
     private static final String KEY_DELETED="deleted";
+    private static final String KEY_UID="user_id";
+    private static final String KEY_USERNAME="username";
+    private static final String KEY_PASSWORD="password";
+    private static final String KEY_UNAME="name";
 
     private static final DateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
 
@@ -34,7 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        StringBuilder Query_Table;
+        StringBuilder Query_Table, Query_Table2;
         Query_Table = new StringBuilder()
                 .append("CREATE TABLE ")
                 .append(TABLE_FRIEND)
@@ -56,48 +62,66 @@ public class DBHelper extends SQLiteOpenHelper {
                 .append(KEY_DELETED)
                 .append(" TEXT)");
 
-        db.execSQL(Query_Table.toString());
+        Query_Table2 = new StringBuilder()
+                .append("CREATE TABLE ")
+                .append(TABLE_USER)
+                .append("(")
+                .append(KEY_UID)
+                .append(" INTEGER PRIMARY KEY AUTOINCREMENT, ")
+                .append(KEY_USERNAME)
+                .append(" TEXT, ")
+                .append(KEY_PASSWORD)
+                .append(" TEXT, ")
+                .append(KEY_UNAME)
+                .append(" TEXT)");
 
+
+        db.execSQL(Query_Table.toString());
         //Create table for user, login
-        db.execSQL("create table user(username text primary key, password text, name text)");
+        db.execSQL(Query_Table2.toString());
+        //db.execSQL("create table user(username text primary key, password text, name text)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FRIEND);
-        onCreate(db);
+        //onCreate(db);
 
         //Login
-        db.execSQL("drop table if exists user");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         onCreate(db);
     }
 
     //Login
     public boolean insert(String namauser, String pwd, String nama){
         long ins;
-        SQLiteDatabase db;
+        //SQLiteDatabase db;
         ContentValues values;
 
         //INSERT
         db = this.getWritableDatabase();
         values = new ContentValues();
-        values.put("username", namauser);
-        values.put("password", pwd);
-        values.put("name", nama);
+//        values.put("username", namauser);
+//        values.put("password", pwd);
+//        values.put("name", nama);
+        values.put(KEY_USERNAME, namauser);
+        values.put(KEY_PASSWORD, pwd);
+        values.put(KEY_UNAME, nama);
 
-        ins = db.insert("user", null, values);
+        ins = db.insert(TABLE_USER, null, values);
         db.close();
         return ins != -1;
     }
 
     //Check username
     public boolean checkUsername(String namauser){
-        SQLiteDatabase db;
+        //SQLiteDatabase db;
         Cursor cursor;
         int count;
 
         db = this.getReadableDatabase();
-        cursor = db.rawQuery("SELECT * FROM user WHERE username=?", new String[]{namauser});
+        //cursor = db.rawQuery("SELECT * FROM user WHERE username=?", new String[]{namauser});
+        cursor = db.rawQuery("SELECT * FROM " +TABLE_USER+ " WHERE " +KEY_USERNAME+ "=?", new String[]{namauser});
 
         count = cursor.getCount();
         db.close();
@@ -107,12 +131,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //Check login
     public boolean checkLogin(String namauser, String pwd){
-        SQLiteDatabase db;
+        //SQLiteDatabase db;
         Cursor cursor;
         int count;
 
         db = this.getReadableDatabase();
-        cursor = db.rawQuery("SELECT * FROM user WHERE username=? and password=?", new String[]{namauser, pwd});
+        //cursor = db.rawQuery("SELECT * FROM user WHERE username=? and password=?", new String[]{namauser, pwd});
+        cursor = db.rawQuery("SELECT * FROM " +TABLE_USER+ " WHERE " +KEY_USERNAME+ "=? AND " +KEY_PASSWORD+ "=?", new String[]{namauser,pwd});
         count = cursor.getCount();
         db.close();
         cursor.close();

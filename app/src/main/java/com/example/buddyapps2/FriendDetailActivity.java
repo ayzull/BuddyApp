@@ -97,10 +97,10 @@ public class FriendDetailActivity extends AppCompatActivity {
 
     public void saveFriend(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Are you sure you want to edit this friend?")
-                .setTitle("Confirm Edit");
+        builder.setMessage("Are you sure you want to save this friend?")
+                .setTitle("Confirm Save");
 
-        builder.setPositiveButton("Edit", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked Save button
                 performSave();

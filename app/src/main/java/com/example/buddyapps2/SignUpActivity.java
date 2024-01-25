@@ -40,28 +40,25 @@ public class SignUpActivity extends AppCompatActivity {
                 pwd1 = pass1.getText().toString().trim();
                 pwd2 = pass2.getText().toString().trim();
 
-                if (nama.equals("")||namauser.equals("")||pwd1.equals("")||pwd2.equals("")){
+                if (nama.equals("") || namauser.equals("") || pwd1.equals("") || pwd2.equals("")) {
                     Toast.makeText(getApplicationContext(), "Fields are empty", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    if (pwd1.equals(pwd2)){
+                } else {
+                    if (pwd1.equals(pwd2)) {
                         check = db.checkUsername(namauser);
-                        if (check){
+                        if (check) {
                             ins = db.insert(namauser, pwd1, nama);
-                            if (ins){
+                            if (ins) {
                                 Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_SHORT).show();
                                 intent = new Intent(SignUpActivity.this, LoginActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
-                        }
-                        else {
+                        } else {
                             Toast.makeText(getApplicationContext(), "Username already exist", Toast.LENGTH_SHORT).show();
                         }
 
 
-                    }
-                    else {
+                    } else {
                         Toast.makeText(getApplicationContext(), "Password does not match", Toast.LENGTH_SHORT).show();
                     }
                 }
