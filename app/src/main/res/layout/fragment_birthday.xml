@@ -6,14 +6,14 @@
     tools:context=".BirthdayFragment"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/sendBirthdayWishButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send Birthday Wish"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
+<!--    <Button-->
+<!--        android:id="@+id/sendBirthdayWishButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Send Birthday Wish"-->
+<!--        android:textSize="20sp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginTop="16dp"/>-->
     <ListView
         android:id="@+id/birthdayListView"
         android:layout_width="match_parent"

@@ -1,12 +1,13 @@
 package com.example.buddyapps2;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Friend {
+public class Friend implements Serializable {
 
     public static ArrayList<Friend> friendArrayList = new ArrayList<>();
     public static String FRIEND_EDIT_EXTRA = "friendEdit";
@@ -122,20 +123,6 @@ public class Friend {
 
     public void setDeleted(Date deleted) {
         this.deleted = deleted;
-    }
-
-    private String getStringFromDate(Date date) {
-        if (date == null)
-            return null;
-        return dateFormat.format(date);
-    }
-
-    private Date getDateFromString(String string) {
-        try {
-            return dateFormat.parse(string);
-        } catch (ParseException | NullPointerException e) {
-            return null;
-        }
     }
 
     public String getBirthdayString() {

@@ -48,6 +48,9 @@ public class ReportFragment extends Fragment {
                 } else if (position == 1) {
                     Intent intent = new Intent(requireContext(), FriendBirthdayActivity.class);
                     startActivity(intent);
+                } else if (position == 2) {
+                    Intent intent = new Intent(requireContext(), FriendTableActivity.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -57,6 +60,7 @@ public class ReportFragment extends Fragment {
         list = new ArrayList<>();
         list.add(new Reports(R.drawable.ic_gender, "Gender Report", "Report for Friend's Gender"));
         list.add(new Reports(R.drawable.ic_birthday, "Birthday Report", "Report for Friend's Birthday"));
+        list.add(new Reports(R.drawable.ic_profile, "Friends Report", "Tabular Report for Friends"));
     }
 
 }

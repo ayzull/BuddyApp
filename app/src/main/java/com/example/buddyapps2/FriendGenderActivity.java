@@ -31,6 +31,7 @@ public class FriendGenderActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
 
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Gender Chart");
 
         pieChart = findViewById(R.id.GenderPieChart);
         populateGenderPieChart();

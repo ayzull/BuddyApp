@@ -35,6 +35,7 @@ public class FriendBirthdayActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
 
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Birthday Chart");
 
         pieChart = findViewById(R.id.BirthdayPieChart);
         populatePieChart();
