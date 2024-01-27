@@ -11,7 +11,7 @@
 
         <item
             android:id="@+id/nav_birthday"
-            android:icon="@drawable/ic_android"
+            android:icon="@drawable/ic_cake"
             android:title="Birthday" />
 
         <item

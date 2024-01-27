@@ -4,16 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BirthdayFragment"
+    android:background="@drawable/background"
     android:orientation="vertical">
 
-<!--    <Button-->
-<!--        android:id="@+id/sendBirthdayWishButton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Send Birthday Wish"-->
-<!--        android:textSize="20sp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginTop="16dp"/>-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wish Your Friend's Birthday"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_margin="20dp"/>
     <ListView
         android:id="@+id/birthdayListView"
         android:layout_width="match_parent"
