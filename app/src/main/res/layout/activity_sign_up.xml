@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background"
-    android:gravity="center"
+    android:paddingTop="70dp"
     tools:context=".SignUpActivity">
 
     <androidx.cardview.widget.CardView
@@ -52,25 +52,64 @@
                 android:paddingTop="20dp"
                 android:singleLine="true"/>
 
-            <EditText
-                android:id="@+id/pass1"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
-                android:textSize="20sp"
-                android:inputType="textPassword"
-                android:paddingTop="20dp"
-                android:singleLine="true"/>
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/pass2"
+                <EditText
+                    android:id="@+id/pass1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:paddingTop="20dp"
+                    android:singleLine="true"
+                    android:textSize="20sp" />
+
+                <ToggleButton
+                    android:id="@+id/showPassword1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textOff="show"
+                    android:textAllCaps="false"
+                    android:textOn="hide"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:background="#A4FFFFFF"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Confirm password"
-                android:textSize="20sp"
-                android:inputType="textPassword"
-                android:paddingTop="20dp"
-                android:singleLine="true"/>
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/pass2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Confirm password"
+                    android:textSize="20sp"
+                    android:inputType="textPassword"
+                    android:paddingTop="20dp"
+                    android:singleLine="true"
+                    android:layout_weight="10"/>
+
+                <ToggleButton
+                    android:id="@+id/showPassword2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textOff="show"
+                    android:textAllCaps="false"
+                    android:textOn="hide"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:background="#A4FFFFFF"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/signupButton"

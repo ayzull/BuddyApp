@@ -6,17 +6,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class SignUpActivity extends AppCompatActivity {
 
     EditText signUpName, signUpUsername, pass1, pass2;
     Button signupButton;
     DBHelper db;
+    ToggleButton showPassword1, showPassword2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,22 @@ public class SignUpActivity extends AppCompatActivity {
         pass1 = findViewById(R.id.pass1);
         pass2 = findViewById(R.id.pass2);
         signupButton = findViewById(R.id.signupButton);
+        showPassword1 = findViewById(R.id.showPassword1);
+        showPassword2 = findViewById(R.id.showPassword2);
+
+        showPassword1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                togglePasswordVisibility(pass1, showPassword1.isChecked());
+            }
+        });
+
+        showPassword2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                togglePasswordVisibility(pass2, showPassword2.isChecked());
+            }
+        });
 
         db = new DBHelper(this);
 
@@ -61,10 +81,8 @@ public class SignUpActivity extends AppCompatActivity {
                                 finish();
                             }
                         } else {
-                            Toast.makeText(getApplicationContext(), "Username already exist", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Username already exists", Toast.LENGTH_SHORT).show();
                         }
-
-
                     } else {
                         Toast.makeText(getApplicationContext(), "Password does not match", Toast.LENGTH_SHORT).show();
                     }
@@ -72,6 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -82,5 +101,16 @@ public class SignUpActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void togglePasswordVisibility(EditText editText, boolean showPassword) {
+        if (showPassword) {
+            editText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+        } else {
+            editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        }
+
+        // Move the cursor to the end of the text to maintain the correct position
+        editText.setSelection(editText.getText().length());
     }
 }
