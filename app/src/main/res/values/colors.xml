@@ -5,5 +5,6 @@
     <color name="colorPrimary">#008080</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#ffA500</color>
+    <color name="colorRowBackground">#B9B9B9</color>
 
 </resources>
