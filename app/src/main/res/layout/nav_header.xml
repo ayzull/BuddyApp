@@ -19,11 +19,15 @@
         android:paddingTop="8dp"
         android:text="Buddy App"
         android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:text="Welcome To Buddy App!" />
 
 </LinearLayout>

@@ -64,12 +64,15 @@ public class FriendBirthdayActivity extends AppCompatActivity {
             colors.add(color);
         }
 
+        int colorBlack = Color.parseColor("#000000");
+
         // Create a dataset and set properties
         PieDataSet dataSet = new PieDataSet(entries, "Birth Months");
         dataSet.setColors(colors); // Set the colors for the dataset
         dataSet.setValueTextSize(16f); // Set the font size for the values
         PieData pieData = new PieData(dataSet);
         pieData.setValueTextSize(16f); // Set the global font size for all values
+        pieChart.setEntryLabelColor(colorBlack);
         pieChart.setData(pieData);
         pieChart.getDescription().setEnabled(false);
         pieChart.invalidate();

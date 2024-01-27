@@ -5,63 +5,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context=".FriendTableActivity">
-    
+
     <TableLayout
+        android:id="@+id/tableLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/tableLayout"
-        android:background="@color/white"
-        android:padding="16dp"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:background="@drawable/table_border"
+        android:padding="8dp">
 
-        <TableRow
-            android:background="@color/colorAccent">
+        <TableRow android:background="@drawable/row_border">
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                android:padding="8dp"
                 android:text="Name"
                 android:textColor="@color/white"
-                android:textSize="14sp"
-                android:layout_weight="4"
-                android:gravity="center_horizontal"
-                android:padding="8dp"/>
+                android:background="@drawable/column_border"
+                android:textSize="14sp" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                android:padding="8dp"
                 android:text="Mobile"
                 android:textColor="@color/white"
-                android:textSize="14sp"
-                android:layout_weight="4"
-                android:gravity="center_horizontal"
-                android:padding="8dp"/>
+                android:background="@drawable/column_border"
+                android:textSize="14sp" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                android:padding="8dp"
                 android:text="Gender"
                 android:textColor="@color/white"
-                android:textSize="14sp"
-                android:layout_weight="4"
-                android:gravity="center_horizontal"
-                android:padding="8dp"/>
+                android:background="@drawable/column_border"
+                android:textSize="14sp" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:gravity="center_horizontal"
+                android:padding="8dp"
                 android:text="Email"
                 android:textColor="@color/white"
-                android:textSize="14sp"
-                android:layout_weight="4"
-                android:gravity="center_horizontal"
-                android:padding="8dp"/>
+                android:background="@drawable/column_border"
+                android:textSize="14sp" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="DOB"
-                android:textColor="@color/white"
-                android:textSize="14sp"
                 android:layout_weight="4"
                 android:gravity="center_horizontal"
-                android:padding="8dp"/>
+                android:padding="8dp"
+                android:text="DOB"
+                android:textColor="@color/white"
+                android:background="@drawable/column_border"
+                android:textSize="14sp" />
         </TableRow>
 
     </TableLayout>
