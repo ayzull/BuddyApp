@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -30,7 +31,8 @@ public class BirthdayActivity extends AppCompatActivity {
         actionBar.setTitle("Send WhatsApp");
 
         txt_message = findViewById(R.id.txt_msg);
-        txt_number = findViewById(R.id.txt_mobile);
+        txt_number = (EditText) findViewById(R.id.txt_mobile);
+        txt_number.setEnabled(false);
         btn_whatsapp = findViewById(R.id.btn_whatsapp);
         getName = findViewById(R.id.friendname);
 
@@ -48,16 +50,21 @@ public class BirthdayActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String mobileNumber = txt_number.getText().toString();
                 String message = txt_message.getText().toString();
-                try {
-                    Intent sendIntent = new Intent("android.intent.action.MAIN");
-                    sendIntent.setAction(Intent.ACTION_VIEW);
-                    sendIntent.setData(Uri.parse("http://api.whatsapp.com/send?phone=" + "+60" + mobileNumber + "&text=" + Uri.encode(message)));
-                    sendIntent.setPackage("com.whatsapp");
-                    startActivity(sendIntent);
-                } catch (Exception e) {
-                    // If WhatsApp is not installed or other issues occur
-                    Toast.makeText(BirthdayActivity.this, "WhatsApp is not installed.", Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
+                if (TextUtils.isEmpty(mobileNumber) || TextUtils.isEmpty(message)) {
+                    // Display a message or toast indicating that the fields are empty
+                    Toast.makeText(BirthdayActivity.this, "Please enter message.", Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        Intent sendIntent = new Intent("android.intent.action.MAIN");
+                        sendIntent.setAction(Intent.ACTION_VIEW);
+                        sendIntent.setData(Uri.parse("http://api.whatsapp.com/send?phone=" + "+60" + mobileNumber + "&text=" + Uri.encode(message)));
+                        sendIntent.setPackage("com.whatsapp");
+                        startActivity(sendIntent);
+                    } catch (Exception e) {
+                        // If WhatsApp is not installed or other issues occur
+                        Toast.makeText(BirthdayActivity.this, "WhatsApp is not installed.", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
                 }
             }
         });

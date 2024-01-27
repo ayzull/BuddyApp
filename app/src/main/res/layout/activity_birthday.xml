@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context=".BirthdayActivity">
 
     <LinearLayout
@@ -17,13 +18,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="WhatsApp Message to"/>
+            android:text="WhatsApp Message to"
+            android:textStyle="bold"
+            android:textColor="#053939"
+            android:textSize="35sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/friendname"
-            android:text="Name"/>
+            android:text="Name"
+            android:textStyle="bold"
+            android:textColor="#053939"
+            android:textSize="35sp"
+            android:layout_marginBottom="70dp"/>
 
         <EditText
             android:id="@+id/txt_msg"
@@ -31,7 +39,7 @@
             android:layout_height="100dp"
             android:minLines="3"
             android:hint="Message"
-            android:inputType="text" />
+            android:inputType="textMultiLine" />
 
         <EditText
             android:id="@+id/txt_mobile"
@@ -41,16 +49,13 @@
             android:hint="Contact"
             android:inputType="number" />
 
-<!--        <Button-->
-<!--            android:id="@+id/btn_choose_contact"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Choose Contact" />-->
-
         <Button
             android:id="@+id/btn_whatsapp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="send message" />
+            android:text="send message"
+            android:textColor="#053939"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#00AEAE"/>
     </LinearLayout>
 </LinearLayout>
