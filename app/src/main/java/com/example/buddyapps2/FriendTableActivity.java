@@ -3,11 +3,8 @@ package com.example.buddyapps2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -40,6 +37,7 @@ public class FriendTableActivity extends AppCompatActivity {
         for (Friend friend : Friend.friendArrayList) {
             TableRow dataRow = new TableRow(this);
 
+
             // Add columns for data
             addDataColumn(dataRow, friend.getFriend_name());
             addDataColumn(dataRow, friend.getMobile());
@@ -59,31 +57,19 @@ public class FriendTableActivity extends AppCompatActivity {
         String formattedDate = dateFormat.format(date);
 
         column.setText(formattedDate);
-        column.setLayoutParams(createTableRowParams());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            column.setTextAppearance(R.style.MyRowTextStyle); // Apply the style
-        } else {
-            // For versions below M, use deprecated method
-            column.setTextAppearance(this, R.style.MyRowTextStyle);
-        }
+        //column.setPadding(8, 8, 8, 8);
 
 
         row.addView(column);
-        row.setBackgroundResource(R.drawable.column_border_generated);
     }
 
 
     private void addDataColumn(TableRow row, String data) {
         TextView column = new TextView(this);
 
+        //column.setPadding(8, 8, 8, 8);
+
         column.setText(data);
-        column.setLayoutParams(createTableRowParams());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            column.setTextAppearance(R.style.MyRowTextStyle); // Apply the style
-        } else {
-            // For versions below M, use deprecated method
-            column.setTextAppearance(this, R.style.MyRowTextStyle);
-        }
 
         row.addView(column);
     }
@@ -94,17 +80,6 @@ public class FriendTableActivity extends AppCompatActivity {
             this.finish();
         }
         return true;
-    }
-
-    private TableRow.LayoutParams createTableRowParams() {
-        TableRow.LayoutParams params = new TableRow.LayoutParams(
-                0, // width
-                TableRow.LayoutParams.WRAP_CONTENT,
-                1f // weight
-        );
-        params.gravity = Gravity.CENTER_HORIZONTAL;
-        params.setMargins(8, 8, 8, 8);
-        return params;
     }
 
 }
