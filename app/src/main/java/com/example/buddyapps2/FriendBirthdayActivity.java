@@ -60,7 +60,8 @@ public class FriendBirthdayActivity extends AppCompatActivity {
 
         // Set different colors for each entry
         ArrayList<Integer> colors = new ArrayList<>();
-        for (int color : ColorTemplate.VORDIPLOM_COLORS) {
+        for (int i = 0; i < 12; i++) {
+            int color = Color.rgb((int) (Math.random() * 255), (int) (Math.random() * 255), (int) (Math.random() * 255));
             colors.add(color);
         }
 
